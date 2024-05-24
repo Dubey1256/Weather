@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Weathercard from "./weathercard";
 import "./style.css";
 
 const Temp = () => {
-  const [searchValue, setSearchValue] = useState("kannauj");
+  const [searchValue, setSearchValue] = useState("");
   const [tempInfo, setTempInfo] = useState({});
 
-  const getWeatherInfo = async () => {
+  const getWeatherInfo = useCallback(async () => {
     try {
-    //   let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid={WriteYourAPIKey}`;
-
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=88c9a97f7d1545a27fd952e3e18cc2d9`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=88c9a97f7d1545a27fd952e3e18cc2d9`;
 
       let res = await fetch(url);
       let data = await res.json();
@@ -36,11 +34,11 @@ const Temp = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [searchValue]);
 
   useEffect(() => {
     getWeatherInfo();
-  }, []);
+  }, [getWeatherInfo]);
 
   return (
     <>
