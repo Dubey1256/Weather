@@ -151,6 +151,7 @@ body {
   border-radius: 5px 0 0 5px;
   outline: none;
   font-size: 18px;
+  margin-top: 150px;
 }
 
 .searchTerm:focus {
@@ -169,6 +170,7 @@ body {
   font-size: 20px;
   outline: none;
   font-size: 16px;
+  margin-top: 150px;
 }
 
 .searchButton:hover {
